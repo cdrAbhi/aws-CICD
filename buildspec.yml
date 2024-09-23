@@ -3,21 +3,32 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Installing Nginx..."
+      - echo "Updating package lists..."
       - apt-get update
+      - echo "Installing Nginx..."
       - apt-get install -y nginx
-      - service nginx start
+      - echo "Starting Nginx service..."
+      - systemctl start nginx
+      - echo "Enabling Nginx to start on boot..."
       - systemctl enable nginx
+
   build:
     commands:
-      - echo "Build start on `date`"
+      - echo "Build process started on `date`"
+      - echo "Copying index.html to the web root..."
       - cp index.html /var/www/html/index.html
-      - echo "Build completed successfully"
+      - echo "Build completed successfully."
+
   post_build:
     commands:
-      - echo "Build done successfully =================="
-      - echo "Public-ip $hostname"
+      - echo "Post-build steps..."
+      - echo "Displaying Public IP or Hostname..."
+      - hostname -I || hostname
+      - echo "Build and deployment process finished."
+
 artifacts:
   files:
     - /var/www/html/index.html
+
+
 
