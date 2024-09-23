@@ -16,6 +16,7 @@ phases:
   post_build:
     commands:
       - echo "Build done successfully =================="
+      - echo "Public-ip $hostname"
 artifacts:
   files:
     - /var/www/html/index.html
