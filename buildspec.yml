@@ -3,32 +3,32 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Updating package lists on Amazon Linux..."
-      - yum update -y
-      - echo "Installing Nginx on Amazon Linux..."
-      - amazon-linux-extras install nginx1.12 -y
+      - echo "Updating package lists..."
+      - apt-get update
+      - echo "Installing Nginx..."
+      - apt-get install -y nginx
       - echo "Starting Nginx service..."
-      - service nginx start
+      - systemctl start nginx
       - echo "Enabling Nginx to start on boot..."
-      - chkconfig nginx on
+      - systemctl enable nginx
 
   build:
     commands:
       - echo "Build process started on `date`"
       - echo "Copying index.html to the web root..."
-      - cp index.html /usr/share/nginx/html/index.html
+      - cp index.html /var/www/html/index.html
       - echo "Build completed successfully."
 
   post_build:
     commands:
       - echo "Post-build steps..."
       - echo "Displaying Public IP or Hostname..."
-      - curl -s http://169.254.169.254/latest/meta-data/public-ipv4 || hostname
+      - hostname -I || hostname
       - echo "Build and deployment process finished."
 
 artifacts:
   files:
-    - /usr/share/nginx/html/index.html
+    - /var/www/html/index.html
 
 
 
