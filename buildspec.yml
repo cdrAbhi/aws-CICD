@@ -7,10 +7,6 @@ phases:
       - apt-get update
       - echo "Installing Nginx..."
       - apt-get install -y nginx
-      - echo "Starting Nginx service..."
-      - systemctl start nginx
-      - echo "Enabling Nginx to start on boot..."
-      - systemctl enable nginx
 
   build:
     commands:
