@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing Nginx..."
+      - apt-get update
+      - apt-get install -y nginx
+      - service nginx start
+      - systemctl enable nginx
+  build:
+    commands:
+      - echo "Build start on `date`"
+      - cp index.html /var/www/html/index.html
+      - echo "Build completed successfully"
+  post_build:
+    commands:
+      - echo "Build done successfully =================="
+artifacts:
+  files:
+    - /var/www/html/index.html
+
