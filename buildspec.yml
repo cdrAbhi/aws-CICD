@@ -24,11 +24,7 @@ phases:
 
 artifacts:
   files:
-    - index.html                    # Upload the index.html file
-    - /var/www/html/index.html       # Upload the final index.html file from /var/www/html
-    - scripts/**
-    - appspec.yml
-    - buildspec.yml
+    - '**/*'
 
 
 
