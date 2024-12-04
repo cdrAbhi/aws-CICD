@@ -1,7 +1,3 @@
-Certainly! Below is a professional **`README.md`** template for your project **AWS CI/CD** on GitHub. This template is structured to provide clear information on the project, its setup, and usage.
-
----
-
 # **AWS CI/CD Pipeline Implementation**
 
 This repository contains the implementation of a **CI/CD pipeline** using **AWS services**, such as **AWS CodePipeline**, **AWS CodeBuild**, **AWS CodeDeploy**, and **AWS EC2**. The project demonstrates a complete end-to-end workflow for automating software delivery processes, from code commit to deployment in the AWS cloud environment.
